@@ -1,13 +1,14 @@
 return {
     servers = {
-        "lua_ls",
+        "bashls",
         "cssls",
         "html",
-        "tsserver",
+        "jsonls",
+        "lua_ls",
+		"nil_ls",
         "pyright",
         -- "rust_analyzer",
-        "bashls",
-        "jsonls",
+        "tsserver",
         "yamlls",
     },
 }
