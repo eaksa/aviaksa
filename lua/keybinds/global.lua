@@ -9,8 +9,8 @@ local M = {
         ["<C-l>"] = { "<C-w>l" },
 
         -- Navigate buffers
-        ["<S-l>"] = { "<CMD>lua require('utils.buffer').next_buffer)<CR>" },
-        ["<S-h>"] = { "<CMD>lua require('utils.buffer').prev_buffer)<CR>" },
+        ["<S-l>"] = { "<CMD>lua require('utils.buffer').next_buffer()<CR>" },
+        ["<S-h>"] = { "<CMD>lua require('utils.buffer').prev_buffer()<CR>" },
         ["<C-p>"] = { "<CMD>BufferPin<CR>" },
 
         -- Resize windows
