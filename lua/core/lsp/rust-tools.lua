@@ -24,8 +24,8 @@ function M.config()
     capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
     local function lsp_keymaps(bufnr)
-        local keymaps = require("builtin.keymap.lsp")
-        local map = require("builtin.keymap.utils")
+        local keymaps = require("keybinds.lsp")
+        local map = require("utils.keymap")
         for mode, keymap in pairs(keymaps) do
             map.mode_set(mode, keymap, bufnr)
         end
