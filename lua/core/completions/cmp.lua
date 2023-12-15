@@ -44,6 +44,17 @@ local M = {
             "hrsh7th/cmp-nvim-lua",
             commit = "f12408bdb54c39c23e67cab726264c10db33ada8",
         },
+		{
+			-- 15 Dec 2023
+			"zbirenbaum/copilot-cmp",
+			commit = "72fbaa03695779f8349be3ac54fa8bd77eed3ee3",
+			dependencies = {
+				-- 15 Dec 2023
+				"zbirenbaum/copilot.lua",
+				commit = "38a41d0d78f8823cc144c99784528b9a68bdd608",
+				event = "InsertEnter",
+			}
+		}
     },
     event = {
         "InsertEnter",
@@ -54,6 +65,8 @@ local M = {
 function M.config()
     local cmp = require("cmp")
     local luasnip = require("luasnip")
+	local copilot = require("copilot")
+	local copilot_cmp = require("copilot_cmp")
     require("luasnip/loaders/from_vscode").lazy_load()
 
     local check_backspace = function()
@@ -88,7 +101,7 @@ function M.config()
         Operator = "󰆕",
         TypeParameter = "󰊄",
         Codeium = "󰚩",
-        Copilot = "",
+        Copilot = "",
     }
 
     local formatting = {
@@ -98,6 +111,52 @@ function M.config()
             return vim_item
         end,
     }
+
+    copilot.setup({
+		panel = {
+			enabled = false,
+			-- auto_refresh = false,
+			-- keymap = {
+			-- 	jump_prev = "[[",
+			-- 	jump_next = "]]",
+			-- 	accept = "<CR>",
+			-- 	refresh = "gr",
+			-- 	open = "<M-CR>"
+			-- },
+			-- layout = {
+			-- 	position = "bottom", -- | top | left | right
+			-- 	ratio = 0.4
+			-- },
+		},
+		suggestion = {
+			enabled = false,
+			-- auto_trigger = false,
+			-- debounce = 75,
+			-- keymap = {
+			-- 	accept = "<M-l>",
+			-- 	accept_word = false,
+			-- 	accept_line = false,
+			-- 	next = "<M-]>",
+			-- 	prev = "<M-[>",
+			-- 	dismiss = "<C-]>",
+			-- },
+		},
+		filetypes = {
+			yaml = false,
+			markdown = false,
+			help = false,
+			gitcommit = false,
+			gitrebase = false,
+			hgcommit = false,
+			svn = false,
+			cvs = false,
+			["."] = false,
+		},
+		copilot_node_command = 'node', -- Node.js version must be > 18.x
+		server_opts_overrides = {},
+	})
+
+	copilot_cmp.setup()
 
     cmp.setup({
         snippet = {
@@ -152,6 +211,7 @@ function M.config()
             { name = "nvim_lsp" },
             { name = "nvim_lua" },
             { name = "luasnip" },
+			{ name = "copilot" },
             { name = "buffer" },
             { name = "path" },
         },
