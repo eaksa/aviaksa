@@ -21,7 +21,7 @@ function M.config()
 
     local function lsp_keymaps(bufnr)
         local keymaps = require("keybinds.lsp")
-        local map = require("utils.keymap")
+        local map = require("keybinds.utils")
         for mode, keymap in pairs(keymaps) do
             map.mode_set(mode, keymap, bufnr)
         end

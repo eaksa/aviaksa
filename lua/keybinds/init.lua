@@ -1,6 +1,6 @@
 local M = {}
 
-local utils = require("utils.keymap")
+local utils = require("keybinds.utils")
 local keymaps = require("keybinds.global")
 
 local default_config = { leader = " " }
