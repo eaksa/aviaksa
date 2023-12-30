@@ -72,6 +72,17 @@ local M = {
 			"<CMD>lua require('utils.buffer').close_focused()<CR>",
 			"Close current buffer"
 		},
+
+		-- Open search and command boxes
+		[":"] = { "<CMD>FineCmdline<CR>", "Input editor command" },
+		["/"] = {
+			"<CMD>SearchBoxMatchAll prompt='/ '<CR>",
+			"Search in buffer"
+		},
+		["?"] = {
+			"<CMD>SearchBoxMatchAll prompt='? ' reverse=true<CR>",
+			"Reverse search in buffer"
+		},
     },
 
     insert = {
@@ -84,6 +95,16 @@ local M = {
         -- Increase/decrease indentation
         ["<"] = { "<gv", "Decrease indentation" },
         [">"] = { ">gv", "Increase indentation" },
+
+		-- Open search box
+		["/"] = {
+			"<CMD>SearchBoxMatchAll prompt='/ ' visual_mode=true<CR>",
+			"Search in buffer"
+		},
+		["?"] = {
+			"<CMD>SearchBoxMatchAll prompt='? ' reverse=true visual_mode=true<CR>",
+			"Reverse search in buffer"
+		},
 
         -- Paste in visual mode
         ["p"] = { "_dP", "Paste" },
