@@ -30,30 +30,22 @@ local function on_attach(bufnr)
     vim.keymap.set("n", ":", api.node.run.cmd, opts("Run Command"))
     vim.keymap.set("n", "o", api.fs.create, opts("Create"))
     vim.keymap.set("n", "O", api.fs.create, opts("Create"))
-    vim.keymap.set("n", "Vy", api.fs.copy.node, opts("Copy"))
+    vim.keymap.set("n", "yy", api.fs.copy.node, opts("Copy"))
+    vim.keymap.set("n", "dd", api.fs.cut, opts("Cut"))
+    vim.keymap.set("n", "p", api.fs.paste, opts("Paste"))
     vim.keymap.set("n", "dD", api.fs.trash, opts("Trash"))
-    vim.keymap.set("n", "VD", api.fs.trash, opts("Trash"))
-    vim.keymap.set("n", "s", api.fs.rename_basename, opts("Rename: Basename"))
+    vim.keymap.set("n", "s", api.fs.rename, opts("Rename"))
+    vim.keymap.set("n", "S", api.fs.rename, opts("Rename"))
     vim.keymap.set("n", "i", api.fs.rename_basename, opts("Rename: Basename"))
     vim.keymap.set("n", "I", api.fs.rename_basename, opts("Rename: Basename"))
     vim.keymap.set("n", "g?", api.tree.toggle_help, opts("Help"))
-    vim.keymap.set("n", "p", api.fs.paste, opts("Paste"))
     vim.keymap.set("n", "cw", api.fs.rename, opts("Rename"))
-    vim.keymap.set("n", "Vs", api.fs.rename, opts("Rename"))
     vim.keymap.set("n", "/", api.tree.search_node, opts("Search"))
     vim.keymap.set(
         "n",
-        "<C-h>",
+        "zh",
         api.tree.toggle_custom_filter,
         opts("Toggle Hidden")
-    )
-    vim.keymap.set("n", "dd", api.fs.cut, opts("Cut"))
-    vim.keymap.set("n", "Vd", api.fs.cut, opts("Cut"))
-    vim.keymap.set(
-        "n",
-        "yy",
-        api.fs.copy.relative_path,
-        opts("Copy Absolute Path")
     )
     vim.keymap.set("n", "<2-LeftMouse>", api.node.open.edit, opts("Open"))
     vim.keymap.set(
@@ -62,6 +54,10 @@ local function on_attach(bufnr)
         api.tree.change_root_to_node,
         opts("CD")
     )
+    vim.keymap.set("n", "L", api.tree.change_root_to_node, opts "CD")
+    vim.keymap.set("n", "H", api.tree.change_root_to_parent, opts "Up")
+    vim.keymap.set("n", "}", api.node.navigate.sibling.last, opts "Last Sibling")
+    vim.keymap.set("n", "{", api.node.navigate.sibling.first, opts "First Sibling")
     -- vim.keymap.set("n", "<C-]>", api.tree.change_root_to_node, opts "CD")
     -- vim.keymap.set("n", "<C-e>", api.node.open.replace_tree_buffer, opts "Open: In Place")
     -- vim.keymap.set("n", "<C-k>", api.node.show_info_popup, opts "Info")
