@@ -30,7 +30,7 @@ function M.config()
         ---@param colors ColorScheme
         on_colors = function(colors) end,
 
-        -- on_highlights = function(hl, c)
+        on_highlights = function(hl, c)
         --     -- Treesitter node types
         --     hl.Statement.style = { italic = true }
         --     hl.PreProc.style = { italic = true }
@@ -40,10 +40,10 @@ function M.config()
         --     -- Cursor line number
         --     hl.CursorLineNr.style = { bold = true }
         --
-        --     -- NvimTree icons
-        --     hl.NvimTreeFolderIcon = { fg = c.magenta }
-        --     hl.NvimTreeGitDirty = { fg = c.yellow }
-        -- end,
+            -- NvimTree icons
+            hl.NvimTreeFolderIcon = { fg = c.magenta }
+            hl.NvimTreeGitDirty = { fg = c.yellow }
+        end,
     })
 
     local status_ok, _ =
