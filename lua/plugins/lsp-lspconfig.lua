@@ -1,8 +1,7 @@
 local M = {
     "neovim/nvim-lspconfig",
 	version = "^2.1.0",
-    commit = "a59d74e12340242c0735666fb2e91afdbe6f2496",
-    lazy = true,
+    -- lazy = true,
     dependencies = {
         {
             "hrsh7th/cmp-nvim-lsp",
@@ -25,14 +24,15 @@ function M.config()
         end
     end
 
-    local lspconfig = require("lspconfig")
     local on_attach = function(client, bufnr)
         lsp_keymaps(bufnr)
         require("illuminate").on_attach(client)
     end
 
+	vim.lsp.set_log_level("debug")
+
     for _, server in pairs(require("lsp.install").servers) do
-        Opts = {
+        local opts = {
             on_attach = on_attach,
             capabilities = capabilities,
         }
@@ -41,10 +41,10 @@ function M.config()
 
         local require_ok, conf_opts = pcall(require, "lsp.config." .. server)
         if require_ok then
-            Opts = vim.tbl_deep_extend("force", conf_opts, Opts)
+			opts = vim.tbl_deep_extend("force", conf_opts, opts)
         end
-
-        lspconfig[server].setup(Opts)
+		vim.lsp.enable(server)
+		vim.lsp.config(server, opts)
     end
 
     local signs = {
