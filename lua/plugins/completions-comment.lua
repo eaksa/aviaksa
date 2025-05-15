@@ -3,10 +3,10 @@ local M = {
 	version = "^0.8.0",
     event = { "BufRead", "BufNewFile" },
     dependencies = {
-        {
-            "JoosepAlviste/nvim-ts-context-commentstring",
-            event = "VeryLazy",
-        },
+        -- {
+        --     "JoosepAlviste/nvim-ts-context-commentstring",
+        --     event = "VeryLazy",
+        -- },
     },
 }
 
