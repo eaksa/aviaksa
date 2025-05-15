@@ -204,9 +204,6 @@ function M.config()
             documentation = cmp.config.window.bordered(),
             side_padding = 0,
         },
-        experimental = {
-            ghost_text = true,
-        },
     })
 end
 
