@@ -1,7 +1,6 @@
 local M = {
-    -- 14 Jul 2023
     "folke/tokyonight.nvim",
-    commit = "1ee11019f8a81dac989ae1db1a013e3d582e2033",
+	version = "^4.11.0",
     lazy = false,
     priority = 1000,
     default_style = "moon",
