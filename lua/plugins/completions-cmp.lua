@@ -1,6 +1,5 @@
 local M = {
     "hrsh7th/nvim-cmp",
-    commit = "2743dd989e9b932e1b4813a4927d7b84272a14e2",
 	version = "^0.0.2",
     dependencies = {
         {
@@ -204,6 +203,9 @@ function M.config()
             documentation = cmp.config.window.bordered(),
             side_padding = 0,
         },
+		experimental = {
+			ghost_text = true,
+		},
     })
 end
 
