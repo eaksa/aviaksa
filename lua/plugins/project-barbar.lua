@@ -17,40 +17,51 @@ function M.config()
     local hl = require("utils.hl")
 
     -- Make tabline invisible
-    vim.api.nvim_set_hl(0, "BufferTabpages", { link = "Normal" })
-    vim.api.nvim_set_hl(0, "BufferTabpageFill", { link = "Normal" })
-    vim.api.nvim_set_hl(0, "BufferOffset", { link = "Normal" })
+    vim.api.nvim_set_hl(
+		0,
+		"BufferTabpages",
+		{ bg = hl.gui_fg("EndOfBuffer") }
+	)
+    vim.api.nvim_set_hl(
+		0,
+		"BufferTabpageFill",
+		{ bg = hl.gui_fg("EndOfBuffer") }
+	)
+    vim.api.nvim_set_hl(
+		0,
+		"BufferOffset",
+		{ bg = hl.gui_fg("EndOfBuffer") }
+	)
 
-	-- FIXME: Broken highlights
-    -- -- Bubble style
-    -- vim.api.nvim_set_hl(
-    --     0,
-    --     "BufferCurrentSign",
-    --     { fg = hl.gui_bg("BufferCurrent") }
-    -- )
-    -- vim.api.nvim_set_hl(
-    --     0,
-    --     "BufferInactiveSign",
-    --     { fg = hl.gui_bg("BufferInactive") }
-    -- )
-    -- vim.api.nvim_set_hl(
-    --     0,
-    --     "BufferVisibleSign",
-    --     { fg = hl.gui_bg("BufferVisible") }
-    -- )
-    -- vim.api.nvim_set_hl(
-    --     0,
-    --     "BufferAlternateSign",
-    --     { fg = hl.gui_bg("BufferAlternate") }
-    -- )
-    --
-    -- -- Differentiate modified filenames from warning signs
-    -- vim.api.nvim_set_hl(0, "BufferCurrentMod", { link = "BufferCurrent" })
-    -- vim.api.nvim_set_hl(0, "BufferInactiveMod", { link = "BufferInactive" })
-    -- vim.api.nvim_set_hl(0, "BufferVisibleMod", { link = "BufferVisible" })
-    -- vim.api.nvim_set_hl(0, "BufferAlternateMod", { link = "BufferAlternate" })
-    --
-    -- vim.api.nvim_set_hl(0, "BufferScrollArrow", { link = "FoldColumn" })
+    -- Bubble style
+    vim.api.nvim_set_hl(
+        0,
+        "BufferCurrentSign",
+        { fg = hl.gui_bg("BufferCurrent") }
+    )
+    vim.api.nvim_set_hl(
+        0,
+        "BufferInactiveSign",
+        { fg = hl.gui_bg("BufferInactive") }
+    )
+    vim.api.nvim_set_hl(
+        0,
+        "BufferVisibleSign",
+        { fg = hl.gui_bg("BufferVisible") }
+    )
+    vim.api.nvim_set_hl(
+        0,
+        "BufferAlternateSign",
+        { fg = hl.gui_bg("BufferAlternate") }
+    )
+
+    -- Differentiate modified filenames from warning signs
+    vim.api.nvim_set_hl(0, "BufferCurrentMod", { link = "BufferCurrent" })
+    vim.api.nvim_set_hl(0, "BufferInactiveMod", { link = "BufferInactive" })
+    vim.api.nvim_set_hl(0, "BufferVisibleMod", { link = "BufferVisible" })
+    vim.api.nvim_set_hl(0, "BufferAlternateMod", { link = "BufferAlternate" })
+
+    vim.api.nvim_set_hl(0, "BufferScrollArrow", { link = "FoldColumn" })
 
     barbar.setup({
         -- Enable/disable animations
