@@ -137,23 +137,18 @@ function M.config()
         },
     }
 
-	--   FIXME: Broken highlights
-  --   local colours = {
-  --       white = hl.gui_fg("Normal"),
-  --       light = hl.gui_bg("CursorLine"),
-		-- black = hl.gui_fg("MiniStatuslineModeNormal"),
-  --       statusline = hl.gui_bg("MiniStatuslineInactive"),
-  --       insert = hl.gui_bg("MiniStatuslineModeNormal"),
-  --   }
-		--
-  --   local theme_mode = function(mode)
-  --       local colour = hl.gui_bg("MiniStatusLineMode" .. mode)
-  --       return {
-  --           a = { bg = colour, fg = hl.darken(colour, 0.7), gui = "bold" },
-  --           b = { bg = hl.darken(colour, 0.7), fg = colours.white },
-  --           c = { bg = colours.statusline, fg = colours.white },
-  --       }
-  --   end
+    local colours = {
+        white = hl.gui_fg("Normal"),
+        light = hl.gui_bg("CursorLine"),
+		black = hl.gui_bg("StatusLine"),
+        statusline = hl.gui_bg("StatusLineNC"),
+
+		normal = hl.gui_bg("TabLineSel"),
+        insert = hl.gui_bg("TabLineSel"),
+		visual = hl.gui_fg("Statement"),
+		replace = hl.gui_bg("Substitute"),
+		command = hl.gui_fg("Debug"),
+    }
 
     local hide_lualine = function()
         return {
@@ -163,24 +158,31 @@ function M.config()
         }
     end
 
-	-- FIXME: Broken highlights
-    -- local theme = {
-    --     normal = theme_mode("Normal"),
-    --     insert = {
-    --         a = {
-    --             bg = colours.white,
-    --             fg = hl.darken(colours.insert, 0.7),
-    --             gui = "bold",
-    --         },
-    --         b = { bg = colours.insert, fg = hl.darken(colours.insert, 0.7) },
-    --         c = { bg = hl.darken(colours.insert, 0.7), fg = colours.insert },
-    --     },
-    --     visual = theme_mode("Visual"),
-    --     command = theme_mode("Command"),
-    --     replace = theme_mode("Replace"),
-    --     terminal = hide_lualine(),
-    --     inactive = hide_lualine(),
-    -- }
+    local theme_mode = function(colour)
+        return {
+            a = { bg = colour, fg = hl.darken(colour, 0.7), gui = "bold" },
+            b = { bg = hl.darken(colour, 0.7), fg = colours.white },
+            c = { bg = colours.statusline, fg = colours.white },
+        }
+    end
+
+    local theme = {
+        normal = theme_mode(colours.normal),
+        insert = {
+            a = {
+                bg = colours.white,
+                fg = hl.darken(colours.insert, 0.7),
+                gui = "bold",
+            },
+            b = { bg = colours.insert, fg = hl.darken(colours.insert, 0.7) },
+            c = { bg = hl.darken(colours.insert, 0.6), fg = colours.white },
+        },
+        visual = theme_mode(colours.visual),
+        command = theme_mode(colours.command),
+        replace = theme_mode(colours.replace),
+        terminal = hide_lualine(),
+        inactive = hide_lualine(),
+    }
 
     -- Make status line float
     vim.api.nvim_set_hl(0, "StatusLine", { fg = hl.gui_fg("StatusLine") })

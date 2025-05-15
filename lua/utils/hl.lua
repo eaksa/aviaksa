@@ -3,14 +3,14 @@ local M = {}
 M.gui_fg = function(element)
     return string.format(
         "#%06x",
-        vim.api.nvim_get_hl_by_name(element, true).foreground
+        vim.api.nvim_get_hl(0, { name = element }).fg
     )
 end
 
 M.gui_bg = function(element)
     return string.format(
         "#%06x",
-        vim.api.nvim_get_hl_by_name(element, true).background
+        vim.api.nvim_get_hl(0, { name = element }).bg
     )
 end
 
