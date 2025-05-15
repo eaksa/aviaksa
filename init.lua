@@ -1,5 +1,5 @@
 local leader = " "
 
-require("config").setup({ leader = " " })
+require("config").setup({ leader = leader })
 require("autocmds")
-require("keybinds").setup({ leader = " " })
+require("keybinds").setup({ leader = leader })
