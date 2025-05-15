@@ -27,23 +27,23 @@ function M.config()
         dim_inactive = false,
         lualine_bold = false,
 
-        -- ---@param colors ColorScheme
-        -- on_colors = function(colors) end,
+        ---@param colors ColorScheme
+        on_colors = function(colors) end,
 
-        on_highlights = function(hl, c)
-            -- Treesitter node types
-            hl.Statement.style = { italic = true }
-            hl.PreProc.style = { italic = true }
-            hl.Type.style = {}
-            hl.Special.style = { italic = true }
-
-            -- Cursor line number
-            hl.CursorLineNr.style = { bold = true }
-
-            -- NvimTree icons
-            hl.NvimTreeFolderIcon = { fg = c.magenta }
-            hl.NvimTreeGitDirty = { fg = c.yellow }
-        end,
+        -- on_highlights = function(hl, c)
+        --     -- Treesitter node types
+        --     hl.Statement.style = { italic = true }
+        --     hl.PreProc.style = { italic = true }
+        --     hl.Type.style = {}
+        --     hl.Special.style = { italic = true }
+        --
+        --     -- Cursor line number
+        --     hl.CursorLineNr.style = { bold = true }
+        --
+        --     -- NvimTree icons
+        --     hl.NvimTreeFolderIcon = { fg = c.magenta }
+        --     hl.NvimTreeGitDirty = { fg = c.yellow }
+        -- end,
     })
 
     local status_ok, _ =
