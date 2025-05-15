@@ -1,2 +1,5 @@
-require("config.options")
-require("config.lazy")
+local leader = " "
+
+require("config").setup({ leader = " " })
+require("autocmds")
+require("keybinds").setup({ leader = " " })
