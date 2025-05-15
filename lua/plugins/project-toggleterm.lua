@@ -30,17 +30,16 @@ function M.config()
             -- border = "curved",
             border = { "", "█", "", "█", "", "█", "", "█" },
         },
-		-- FIXME: Broken highlights
-        -- highlights = {
-        --     NormalFloat = {
-        --         guifg = hl.gui_fg("NormalFloat"),
-        --         guibg = hl.gui_bg("NormalFloat"),
-        --     },
-        --     FloatBorder = {
-        --         guifg = hl.gui_fg("FloatBorder"),
-        --         -- guibg = hl.gui_bg("FloatBorder"),
-        --     },
-        -- },
+        highlights = {
+            NormalFloat = {
+                guifg = hl.gui_fg("NormalFloat"),
+                guibg = hl.gui_bg("NormalFloat"),
+            },
+            FloatBorder = {
+                guifg = hl.gui_fg("FloatBorder"),
+                -- guibg = hl.gui_bg("FloatBorder"),
+            },
+        },
     })
 
     function _G.set_terminal_keymaps()
