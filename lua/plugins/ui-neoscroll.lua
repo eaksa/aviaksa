@@ -2,7 +2,7 @@ local M = {
     "karb94/neoscroll.nvim",
 	-- 15 May 2025
 	commit = "f957373912e88579e26fdaea4735450ff2ef5c9c",
-    event = { "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
+    event = { "VimEnter", "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
 }
 
 function M.config()
@@ -10,8 +10,6 @@ function M.config()
     if not status_ok then
         return
     end
-
-    local config = require("neoscroll.config")
 
     neoscroll.setup({
         mappings = {},
@@ -25,16 +23,18 @@ function M.config()
         performance_mode = false, -- Disable "Performance Mode" on all buffers.
     })
 
-	-- FIXME: set_mappings() is deprecated
-    -- config.set_mappings({
-    --     ["<S-j>"] = { "scroll", { "vim.wo.scroll", "true", "100" } },
-    --     ["<S-k>"] = { "scroll", { "-vim.wo.scroll", "true", "100" } },
-    --     -- ["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "100" } },
-    --     -- ["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "100" } },
-    --     -- ["zt"] = { "zt", { "100" } },
-    --     -- ["zz"] = { "zz", { "100" } },
-    --     -- ["zb"] = { "zb", { "100" } },
-    -- })
+	local keymap = {
+		["<S-j>"] = function() neoscroll.scroll(vim.wo.scroll, { move_cursor = true, duration = 100 }) end;
+		["<S-k>"] = function() neoscroll.scroll(-vim.wo.scroll, { move_cursor = true, duration = 100 }) end;
+		["<C-u>"] = function() neoscroll.scroll(-vim.wo.scroll, { move_cursor = true, duration = 100 }) end;
+		["<C-d>"] = function() neoscroll.scroll(vim.wo.scroll, { move_cursor = true, duration = 100 }) end;
+		["zt"] = function() neoscroll.zt({ half_win_duration = 100 }) end;
+		["zz"] = function() neoscroll.zz({ half_win_duration = 100 }) end;
+		["zb"] = function() neoscroll.zb({ half_win_duration = 100 }) end;
+	}
+	for key, func in pairs(keymap) do
+		vim.keymap.set({"n", "v", "x"}, key, func, { silent = true, noremap = true })
+	end
 end
 
 return M
