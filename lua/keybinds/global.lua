@@ -134,6 +134,10 @@ M.normal["<leader>"] = {
 			"<CMD>lua require('utils.terminals').toggle_lazygit()<CR>",
 			"Open Lazygit",
 		},
+		["z"] = {
+			"<CMD>lua _TOGGLE_ZEN_MODE()<CR>",
+			"Toggle zen mode",
+		}
 		-- ["s"] = { "<CMD>lua require('utils.terminals').toggle_spotify()<CR>", "Open Spotify" },
 	},
 

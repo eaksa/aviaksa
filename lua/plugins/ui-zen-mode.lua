@@ -35,41 +35,27 @@ local M = {
             twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
             gitsigns = { enabled = true }, -- disables git signs
             tmux = { enabled = false }, -- disables the tmux statusline
-            -- this will change the font size on kitty when in zen mode
-            -- to make this work, you need to set the following kitty options:
-            -- - allow_remote_control socket-only
-            -- - listen_on unix:/tmp/kitty
-            kitty = {
-                enabled = false,
-                font = "+4", -- font size increment
-            },
-            -- this will change the font size on alacritty when in zen mode
-            -- requires  Alacritty Version 0.10.0 or higher
-            -- uses `alacritty msg` subcommand to change font size
-            alacritty = {
-                enabled = false,
-                font = "17", -- font size
-            },
             -- this will change the font size on wezterm when in zen mode
             -- See alse also the Plugins/Wezterm section in this projects README
             wezterm = {
-                enabled = false,
+                enabled = true,
                 -- can be either an absolute font size or the number of incremental steps
-                font = "+4", -- (10% increase per step)
+                font = "+1", -- (10% increase per step)
             },
         },
         -- callback where you can add custom code when the Zen window opens
         on_open = function(win)
             require("barbecue.ui").toggle(false)
-            _ORIGINAL_WINDOW_IS_FULL_SCREEN = _TERM_WINDOW_IS_FULL_SCREEN()
-            _ENTER_FULL_SCREEN()
+            -- _ORIGINAL_WINDOW_IS_FULL_SCREEN = _TERM_WINDOW_IS_FULL_SCREEN()
+            -- _ENTER_FULL_SCREEN()
         end,
         -- callback where you can add custom code when the Zen window closes
         on_close = function()
             require("barbecue.ui").toggle(true)
-            if not _ORIGINAL_WINDOW_IS_FULL_SCREEN then
-                _EXIT_FULL_SCREEN()
-            end
+			require("lualine").hide({ unhide = true })
+            -- if not _ORIGINAL_WINDOW_IS_FULL_SCREEN then
+            --     _EXIT_FULL_SCREEN()
+            -- end
         end,
     },
 }
@@ -80,6 +66,7 @@ function _TOGGLE_ZEN_MODE()
     if is_nvim_tree then
         return
     end
+	require("lualine").hide({ unhide = false })
     require("zen-mode").toggle()
 end
 
