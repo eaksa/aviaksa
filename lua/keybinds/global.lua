@@ -31,8 +31,8 @@ local M = {
             "List files",
         },
         ["gt"] = {
-            "<CMD>lua require('utils.buffer').eval_unmodified('Telescope live_grep')<CR>",
-            "Search project tree",
+            "<CMD>lua require('utils.buffer').eval_unmodified('Telescope grep_string')<CR>",
+            "Grep string",
         },
         ["gD"] = {
             "<CMD>lua require('utils.buffer').eval_unmodified('Telescope projects')<CR>",
