@@ -117,6 +117,10 @@ local M = {
 
 -- EXTENDED KEYBINDINGS --
 M.normal["<leader>"] = {
+	["a"] = {
+		name = "Avante",
+		["d"] = { "<CMD>AvanteClear<CR>", "avante: clear"},
+	},
 	["f"] = {
 		name = "Find",
 		["f"] = { "gf", "List files" },
