@@ -17,7 +17,9 @@ M.next_buffer = function()
 end
 
 M.alt_buffer = function()
-    M.eval_unmodified("b#")
+	-- Allow switching to alternate buffer even with unsaved changes
+    vim.cmd("b#")
+	-- M.eval_unmodified("b#")
 end
 
 M.goto_buffer = function(n)
