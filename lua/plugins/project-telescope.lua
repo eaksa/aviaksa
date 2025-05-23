@@ -31,6 +31,7 @@ M.opts = {
                 ["l"] = actions.select_default,
             },
             i = {
+				["<S-CR>"] = actions.select_vertical,
                 ["<Down>"] = actions.move_selection_next,
                 ["<Up>"] = actions.move_selection_previous,
                 ["<C-j>"] = actions.move_selection_next,
