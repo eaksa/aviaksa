@@ -61,11 +61,6 @@ local M = {
 }
 
 function _TOGGLE_ZEN_MODE()
-    -- Do not enter Zen Mode in NvimTree buffer
-    local is_nvim_tree = require("nvim-tree.api").tree.is_tree_buf(0)
-    if is_nvim_tree then
-        return
-    end
 	require("lualine").hide({ unhide = false })
     require("zen-mode").toggle()
 end

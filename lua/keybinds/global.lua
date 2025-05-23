@@ -146,7 +146,6 @@ M.normal["<leader>"] = {
 	},
 
 	["p"] = { "<CMD>BufferPin<CR>", "Pin buffer" },
-	["e"] = { "<CMD>NvimTreeToggle<CR>", "Toggle NvimTree" },
 	["h"] = { "<CMD>nohlsearch<CR>", "Clear highlights" },
 }
 

@@ -52,18 +52,15 @@ M.close_focused = function()
         return
     end
 
-    -- Get number of listed buffers excluding NvimTree
+    -- Get number of listed buffers
     local buf_count = function()
         local buffers = vim.fn.getbufinfo({
             bufloaded = 1,
             buflisted = 1,
         })
-        local nvim_tree = require("nvim-tree.api").tree
         local count = 0
-        for _, buf in ipairs(buffers) do
-            if not nvim_tree.is_tree_buf(buf.bufnr) then
-                count = count + 1
-            end
+        for _ in ipairs(buffers) do
+			count = count + 1
         end
         return count
     end
@@ -92,24 +89,17 @@ M.close_focused = function()
     end
 
     if buf_count() > 1 then
-        local nvim_tree = require("nvim-tree.api").tree
-        local is_nvim_tree = nvim_tree.is_tree_buf(0)
-        if is_nvim_tree then
-            -- Close NvimTree
-            nvim_tree.close()
-        else
-            -- Write to file if buffer has been modified
-            local bufnr = vim.api.nvim_get_current_buf()
-            if vim.bo[bufnr].modified then
-                vim.cmd("write")
-            end
-            if buffer.is_pinned(0) then
-                vim.cmd("BufferClose")
-            end
-            pcall(function()
-                vim.cmd("BufferCloseAllButPinned")
-            end)
-        end
+		-- Write to file if buffer has been modified
+		local bufnr = vim.api.nvim_get_current_buf()
+		if vim.bo[bufnr].modified then
+			vim.cmd("write")
+		end
+		if buffer.is_pinned(0) then
+			vim.cmd("BufferClose")
+		end
+		pcall(function()
+			vim.cmd("BufferCloseAllButPinned")
+		end)
     else
         -- If only one buffer remaining and no splits, quit Neovim
         vim.cmd("quit")

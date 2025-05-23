@@ -1,18 +1,3 @@
--- Open NvimTree if buffer is a directory or a [No Name]
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-    callback = function(data)
-        local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
-        local directory = vim.fn.isdirectory(data.file) == 1
-        if not no_name and not directory then
-            return
-        end
-        if directory then
-            vim.cmd.cd(data.file)
-        end
-        require("nvim-tree.api").tree.open()
-    end,
-})
-
 -- Use "ZZ" to quit from common plugins
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = {
