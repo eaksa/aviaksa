@@ -14,3 +14,11 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         vim.lsp.codelens.refresh()
     end,
 })
+
+-- Autoload venv when opening Python files
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = { "python" },
+    callback = function()
+        require("swenv.api").auto_venv()
+    end
+})

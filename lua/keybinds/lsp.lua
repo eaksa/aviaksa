@@ -14,6 +14,10 @@ M.normal = {
 				"<CMD>lua vim.lsp.buf.rename()<CR>",
 				"Rename all references",
 			},
+			["v"] = {
+				"<CMD>lua require('swenv.api').auto_venv()<CR>",
+				"Reload environment",
+			}
 		},
 
 		["a"] = {
