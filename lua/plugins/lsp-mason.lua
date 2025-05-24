@@ -13,7 +13,7 @@ local M = {
 
 local settings = {
     ui = {
-        border = { "", "█", "", "█", "", "█", "", "█" },
+        -- border = { "", "█", "", "█", "", "█", "", "█" },
         icons = {
             package_installed = "◍",
             package_pending = "◍",

@@ -74,15 +74,15 @@ local M = {
 		},
 
 		-- Open search and command boxes
-		[":"] = { "<CMD>FineCmdline<CR>", "Input editor command" },
-		["/"] = {
-			"<CMD>SearchBoxMatchAll prompt='/ '<CR>",
-			"Search in buffer"
-		},
-		["?"] = {
-			"<CMD>SearchBoxMatchAll prompt='? ' reverse=true<CR>",
-			"Reverse search in buffer"
-		},
+		-- [":"] = { "<CMD>FineCmdline<CR>", "Input editor command" },
+		-- ["/"] = {
+		-- 	"<CMD>SearchBoxMatchAll prompt='/ '<CR>",
+		-- 	"Search in buffer"
+		-- },
+		-- ["?"] = {
+		-- 	"<CMD>SearchBoxMatchAll prompt='? ' reverse=true<CR>",
+		-- 	"Reverse search in buffer"
+		-- },
     },
 
     insert = {

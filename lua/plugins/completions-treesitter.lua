@@ -30,6 +30,7 @@ function M.config()
             "markdown_inline",
             "bash",
             "python",
+			"regex",
             "rust",
         }, -- put the language you want in this array
         -- ensure_installed = "all", -- one of "all" or a list of languages

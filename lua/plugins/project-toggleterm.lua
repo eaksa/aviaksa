@@ -12,7 +12,7 @@ function M.config()
     end
     local hl = require("utils.hl")
 
-    vim.api.nvim_set_hl(0, "FloatBorder", { fg = hl.gui_bg("NormalFloat") })
+    -- vim.api.nvim_set_hl(0, "FloatBorder", { fg = hl.gui_bg("NormalFloat") })
 
     toggleterm.setup({
         size = 20,
@@ -27,8 +27,8 @@ function M.config()
         close_on_exit = true,
         shell = vim.o.shell,
         float_opts = {
-            -- border = "curved",
-            border = { "", "█", "", "█", "", "█", "", "█" },
+            border = "curved",
+            -- border = { "", "█", "", "█", "", "█", "", "█" },
         },
         highlights = {
             NormalFloat = {
@@ -37,7 +37,7 @@ function M.config()
             },
             FloatBorder = {
                 guifg = hl.gui_fg("FloatBorder"),
-                -- guibg = hl.gui_bg("FloatBorder"),
+                guibg = hl.gui_bg("FloatBorder"),
             },
         },
     })
